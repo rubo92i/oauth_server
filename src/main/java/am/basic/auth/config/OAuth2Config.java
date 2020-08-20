@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
@@ -48,6 +49,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 
     @Autowired
+    private TokenEnhancer customTokenEnhancer;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -78,6 +82,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints
                 .tokenStore(tokenStore)
+                .tokenEnhancer(customTokenEnhancer)
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsServiceImpl);
     }

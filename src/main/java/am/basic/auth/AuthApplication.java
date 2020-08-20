@@ -29,5 +29,4 @@ public class AuthApplication {
         return new JdbcTokenStore(dataSource);
     }
 
-
 }

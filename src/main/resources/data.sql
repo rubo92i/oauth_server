@@ -1,4 +1,4 @@
-CREATE TABLE `oauth_access_token` (
+CREATE TABLE IF NOT EXISTS `oauth_access_token` (
   `token_id` VARCHAR(256) DEFAULT NULL,
   `token` BLOB,
   `authentication_id` VARCHAR(256) DEFAULT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE `oauth_access_token` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `oauth_refresh_token` (
+CREATE TABLE IF NOT EXISTS `oauth_refresh_token` (
   `token_id` VARCHAR(256) DEFAULT NULL,
   `token` BLOB,
   `authentication` BLOB

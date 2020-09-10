@@ -1,8 +1,8 @@
-package am.basic.auth.config;
+package am.basic.notificator.auth.config;
 
 
-import am.basic.auth.model.Authority;
-import am.basic.auth.repository.UserRepository;
+import am.basic.notificator.model.Authority;
+import am.basic.notificator.auth.service.CrmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class CustomTokenEnhancer implements TokenEnhancer {
 
     @Autowired
-    private UserRepository userRepository;
+    private CrmService crmService;
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
@@ -27,7 +27,7 @@ public class CustomTokenEnhancer implements TokenEnhancer {
         final Map<String, Object> additionalInfo = new HashMap<>();
 
 
-        am.basic.auth.model.User user = userRepository.getByUsername(oauthUser.getUsername());
+        am.basic.notificator.model.User user = crmService.getByUsername(oauthUser.getUsername());
 
         if (user != null) {
             additionalInfo.put("userId", user.getId());

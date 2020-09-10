@@ -1,9 +1,8 @@
-package am.basic.auth.service;
+package am.basic.notificator.auth.service;
 
 
-import am.basic.auth.model.User;
-import am.basic.auth.model.UserStatus;
-import am.basic.auth.repository.UserRepository;
+import am.basic.notificator.model.User;
+import am.basic.notificator.model.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,14 +19,14 @@ import java.util.stream.Collectors;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private CrmService crmService;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 
-        User user = userRepository.getByUsername(username);
+        User user = crmService.getByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("user not found");
         }

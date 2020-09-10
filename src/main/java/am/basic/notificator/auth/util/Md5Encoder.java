@@ -1,4 +1,4 @@
-package am.basic.auth.util;
+package am.basic.notificator.auth.util;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

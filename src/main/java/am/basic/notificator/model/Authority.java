@@ -1,4 +1,4 @@
-package am.basic.auth.model;
+package am.basic.notificator.model;
 
 
 import lombok.Data;
@@ -9,12 +9,10 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Data
-@Entity
-public class Authority implements GrantedAuthority, Serializable {
+ public class Authority implements GrantedAuthority, Serializable {
 
 
-    @Id
-    private int id;
+     private int id;
 
     private String name;
 

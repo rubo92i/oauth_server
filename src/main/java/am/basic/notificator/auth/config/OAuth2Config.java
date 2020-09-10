@@ -1,6 +1,6 @@
-package am.basic.auth.config;
+package am.basic.notificator.auth.config;
 
-import am.basic.auth.util.Md5Encoder;
+import am.basic.notificator.auth.util.Md5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

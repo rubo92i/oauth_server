@@ -2,7 +2,7 @@ package am.basic.notificator.auth.service;
 
 
 import am.basic.notificator.model.User;
-import am.basic.notificator.model.UserStatus;
+import am.basic.notificator.model.lcp.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -38,6 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = user.getAuthorities().stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getName()))
                 .collect(Collectors.toList());
+        simpleGrantedAuthorities.add(new SimpleGrantedAuthority("ID:" + user.getId()));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), simpleGrantedAuthorities);
     }

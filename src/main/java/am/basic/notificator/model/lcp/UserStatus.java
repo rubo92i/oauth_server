@@ -1,4 +1,4 @@
-package am.basic.notificator.model;
+package am.basic.notificator.model.lcp;
 
 import java.io.Serializable;
 

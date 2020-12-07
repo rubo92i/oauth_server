@@ -1,5 +1,6 @@
 package am.basic.notificator.model;
 
+import am.basic.notificator.model.lcp.UserStatus;
 import lombok.Data;
 
 import java.io.Serializable;
